@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum BottleneclResponse: string
+enum BottleneckResponse: string
 {
     case BOTTLENECK_ADS = 'Ads / offer problem';
     case BOTTLENECK_FOLLOW_UP = 'Follow-up problem';

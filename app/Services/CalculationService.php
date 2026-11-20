@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Enums\ResponseTime;
-use App\Enums\BottleneclResponse;
+use App\Enums\BottleneckResponse;
 
 class CalculationService
 {
@@ -47,7 +47,7 @@ class CalculationService
             'margin' => (float) $input['gross_margin'] / 100,
             'close_rate' => (float) $input['close_rate'] / 100,
             'has_follow_up' => (bool) $input['has_follow_up'],
-            'response' =>ResponseTime::from($input['response_time']),
+            'response' => ResponseTime::from($input['response_time']),
         ];
     }
     private function calculateMetrics(array $data): array
@@ -117,11 +117,7 @@ class CalculationService
             }
         }
 
-        $score += match ($response) {
-            ResponseTime::Under5Min => 10,
-            ResponseTime::SameDay => 0,
-            ResponseTime::NextDayOrLater => -15,
-        };
+        $score += $response->score();
 
         if (! $hasFollowUp) {
             $score -= 15;
@@ -158,15 +154,15 @@ class CalculationService
         ResponseTime $response
     ): string {
         if ($cpl === null || $cpl > $beCpl) {
-            return BottleneclResponse::BOTTLENECK_ADS->value;
+            return BottleneckResponse::BOTTLENECK_ADS->value;
         }
 
         if ($netProfit < 0) {
             return (! $hasFollowUp || $response === ResponseTime::NextDayOrLater)
-                ? BottleneclResponse::BOTTLENECK_FOLLOW_UP->value
-                : BottleneclResponse::BOTTLENECK_SALES->value;
+                ? BottleneckResponse::BOTTLENECK_FOLLOW_UP->value
+                : BottleneckResponse::BOTTLENECK_SALES->value;
         }
 
-        return BottleneclResponse::BOTTLENECK_NONE->value;
+        return BottleneckResponse::BOTTLENECK_NONE->value;
     }
 }
