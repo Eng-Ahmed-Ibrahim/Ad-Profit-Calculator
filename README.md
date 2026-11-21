@@ -12,21 +12,47 @@ Built as the Joya Digital Junior Developer assessment.
 - Vanilla JavaScript 
 - PHPUnit
 
+## Installation
 
+### 1. Clone the repository
+
+```bash
 git clone git@github.com:Eng-Ahmed-Ibrahim/Ad-Profit-Calculator.git ad-profit-doctor
 cd ad-profit-doctor
+```
 
+### 2. Install dependencies
+
+```bash
 composer install
+npm install
+```
+
+### 3. Environment setup
+
+```bash
 cp .env.example .env
 php artisan key:generate
+```
 
+### 4. Database setup
+
+```bash
 touch database/database.sqlite
 php artisan migrate
+```
 
-npm install
+### 5. Build assets
+
+```bash
 npm run build
+```
 
+### 6. Run the application
+
+```bash
 php artisan serve
+```
 ```
 
 Open http://127.0.0.1:8000.
