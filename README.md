@@ -4,6 +4,17 @@ A small Laravel app that tells a business owner whether their paid ads are actua
 
 Built as the Joya Digital Junior Developer assessment.
 
+## Screenshots
+ 
+| Form | Case A: Healthy |
+|---|---|
+| <img src="docs/1.png" width="320" alt="Form"> | <img src="docs/2.png" width="320" alt="Case A result"> |
+ 
+| Case B: Losing money | Case C: zero leads (N/A) |
+|---|---|
+| <img src="docs/3.png" width="320" alt="Case B result"> | <img src="docs/4.png" width="320" alt="Case C result"> |
+ 
+
 ## Stack
 
 - PHP 8.3+ / Laravel 13
