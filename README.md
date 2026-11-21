@@ -28,7 +28,7 @@ Built as the Joya Digital Junior Developer assessment.
 ### 1. Clone the repository
 
 ```bash
-git clone git@github.com:Eng-Ahmed-Ibrahim/Ad-Profit-Calculator.git ad-profit-doctor
+git clone https://github.com/Eng-Ahmed-Ibrahim/Ad-Profit-Calculator.git ad-profit-doctor
 cd ad-profit-doctor
 ```
 
