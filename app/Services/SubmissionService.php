@@ -16,4 +16,8 @@ class SubmissionService
             ...$this->calculator->calculate($validated),
         ]);
     }
+    public function getByUuid(string $uuid): ?Submission
+    {
+        return Submission::where('uuid', $uuid)->first();
+    }
 }

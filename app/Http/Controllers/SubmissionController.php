@@ -14,6 +14,18 @@ class SubmissionController extends Controller
     {
         return view('submission.index');
     }
+    public function results(string $uuid)
+    {
+        $response = $this->submissionService->getByUuid($uuid);
+
+        if (! $response) {
+            return redirect()->route('submission.index')->with('error', 'Submission not found.');
+        }
+
+        return view('submission.result')
+            ->with('response', $response)
+        ;
+    }
     public function store(CalculateRequest $request)
     {
         $validated = $request->validated();
@@ -25,9 +37,8 @@ class SubmissionController extends Controller
             return redirect()->back()->with('error', 'An error occurred while processing your submission. Please try again.');  
         }
 
-        return view('submission.result')
+        return redirect()->route('submission.results', ['uuid' => $response->uuid])
             ->with('success', 'Submission successful!')
-            ->with('response', $response)
         ;
     }
 }
